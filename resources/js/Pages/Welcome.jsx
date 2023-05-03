@@ -2,6 +2,7 @@ import ColorBlob from "@/Components/ColorBlob";
 import SearchForm from "@/Components/SearchForm";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 import { Link, Head } from "@inertiajs/react";
+import Results from "@/Components/Results";
 
 const background = (
     <div className="absolute top-0 right-0 -z-10 h-full min-h-screen w-full overflow-hidden opacity-40">
@@ -49,6 +50,7 @@ const header = (
 );
 
 export default function Welcome({ searchRes, laravelVersion, phpVersion }) {
+    console.log(searchRes);
     return (
         <div className="relative h-full w-full">
             <Head title="NPI Search" />
@@ -58,12 +60,10 @@ export default function Welcome({ searchRes, laravelVersion, phpVersion }) {
                 <SearchForm defaults={searchRes[0]} />
             </div>
 
-            {searchRes && (
-                <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <pre className="whitespace-pre-wrap">
-                        {JSON.stringify(searchRes, null, 2)}
-                    </pre>
-                </div>
+            {searchRes[1] && searchRes[1]["result_count"] > 0 && (
+                <>
+                <Results searchResult={searchRes[1]} />
+                </>
             )}
             {background}
         </div>
