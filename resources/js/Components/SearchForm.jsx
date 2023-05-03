@@ -239,7 +239,7 @@ const SearchForm = ({ defaults }) => {
                             }}
                         >
                             {isAdvancedSearch
-                                ? "Close advanced search ✗"
+                                ? "Cancel advanced search ✗"
                                 : "Show advanced search ↓"}
                         </button>
                     </div>
