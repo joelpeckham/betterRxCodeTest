@@ -37,7 +37,7 @@ const SearchForm = () => {
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
-                    router.post("/search", search);
+                    router.get("/search", search);
                 }}
                 ref={parentRef}
             >
