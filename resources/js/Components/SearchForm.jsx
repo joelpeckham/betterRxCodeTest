@@ -4,8 +4,9 @@
 
 // Path: resources/js/Components/SearchForm.jsx
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { router } from "@inertiajs/react";
+import autoAnimate from "@formkit/auto-animate";
 
 const SearchForm = () => {
     const [search, setSearch] = useState({
@@ -18,6 +19,28 @@ const SearchForm = () => {
         zip: "",
     });
     const [isAdvancedSearch, setIsAdvancedSearch] = useState(false);
+
+    const parentRef = useRef(null);
+
+    useEffect(() => {
+        if (parentRef.current) {
+            autoAnimate(parentRef.current);
+        }
+    }, [parent]);
+
+    const searchButton = (
+        <button
+            type="submit"
+            className="mt-1 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600"
+        >
+            Search
+        </button>
+    );
+
+    const labelStyle = "block text-sm font-medium text-gray-700";
+    const inputStyle =
+        "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md";
+
     return (
         <div className="mt-10">
             <form
@@ -25,21 +48,17 @@ const SearchForm = () => {
                     e.preventDefault();
                     router.post("/search", search);
                 }}
+                ref={parentRef}
             >
                 <div className="flex flex-row items-center gap-2">
-                    <div className="w-1/2">
-                        <label
-                            htmlFor="firstName"
-                            className="block text-sm font-medium text-gray-700"
-                        >
+                    <div className="w-full">
+                        <label htmlFor="firstName" className={labelStyle}>
                             First Name
                         </label>
                         <input
                             type="text"
                             name="firstName"
                             id="firstName"
-                            autoComplete="given-name"
-                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                             value={search.firstName}
                             onChange={(e) =>
                                 setSearch({
@@ -47,21 +66,17 @@ const SearchForm = () => {
                                     firstName: e.target.value,
                                 })
                             }
+                            className={inputStyle}
                         />
                     </div>
-                    <div className="w-1/2">
-                        <label
-                            htmlFor="lastName"
-                            className="block text-sm font-medium text-gray-700"
-                        >
+                    <div className="w-full">
+                        <label htmlFor="lastName" className={labelStyle}>
                             Last Name
                         </label>
                         <input
                             type="text"
                             name="lastName"
                             id="lastName"
-                            autoComplete="family-name"
-                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                             value={search.lastName}
                             onChange={(e) =>
                                 setSearch({
@@ -69,137 +84,131 @@ const SearchForm = () => {
                                     lastName: e.target.value,
                                 })
                             }
+                            className={inputStyle}
                         />
                     </div>
                 </div>
                 {isAdvancedSearch && (
-                    <div className="flex flex-col items-center justify-center gap-2 mt-4">
-                        <div className="w-1/2">
-                            <label
-                                htmlFor="npiNumber"
-                                className="block text-sm font-medium text-gray-700"
-                            >
-                                NPI Number
-                            </label>
-                            <input
-                                type="text"
-                                name="npiNumber"
-                                id="npiNumber"
-                                autoComplete="npiNumber"
-                                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                value={search.npiNumber}
-                                onChange={(e) =>
-                                    setSearch({
-                                        ...search,
-                                        npiNumber: e.target.value,
-                                    })
-                                }
-                            />
+                    <div>
+                        <div className="flex flex-row items-center gap-2">
+                            <div className="w-full">
+                                <label
+                                    htmlFor="npiNumber"
+                                    className={labelStyle}
+                                >
+                                    NPI Number
+                                </label>
+                                <input
+                                    type="text"
+                                    name="npiNumber"
+                                    id="npiNumber"
+                                    value={search.npiNumber}
+                                    onChange={(e) =>
+                                        setSearch({
+                                            ...search,
+                                            npiNumber: e.target.value,
+                                        })
+                                    }
+                                    className={inputStyle}
+                                />
+                            </div>
+                            <div className="w-full">
+                                <label
+                                    htmlFor="taxonomyDescription"
+                                    className={labelStyle}
+                                >
+                                    Taxonomy Description
+                                </label>
+                                <input
+                                    type="text"
+                                    name="taxonomyDescription"
+                                    id="taxonomyDescription"
+                                    value={search.taxonomyDescription}
+                                    onChange={(e) =>
+                                        setSearch({
+                                            ...search,
+                                            taxonomyDescription: e.target.value,
+                                        })
+                                    }
+                                    className={inputStyle}
+                                />
+                            </div>
                         </div>
-                        <div className="w-1/2">
-                            <label
-                                htmlFor="taxonomyDescription"
-                                className="block text-sm font-medium text-gray-700"
-                            >
-                                Taxonomy Description
-                            </label>
-                            <input
-                                type="text"
-                                name="taxonomyDescription"
-                                id="taxonomyDescription"
-                                autoComplete="taxonomyDescription"
-                                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                value={search.taxonomyDescription}
-                                onChange={(e) =>
-                                    setSearch({
-                                        ...search,
-                                        taxonomyDescription: e.target.value,
-                                    })
-                                }
-                            />
-                        </div>
-                        <div className="w-1/2">
-                            <label
-                                htmlFor="city"
-                                className="block text-sm font-medium text-gray-700"
-                            >
-                                City
-                            </label>
-                            <input
-                                type="text"
-                                name="city"
-                                id="city"
-                                autoComplete="city"
-                                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                value={search.city}
-                                onChange={(e) =>
-                                    setSearch({
-                                        ...search,
-                                        city: e.target.value,
-                                    })
-                                }
-                            />
-                        </div>
-                        <div className="w-1/2">
-                            <label
-                                htmlFor="state"
-                                className="block text-sm font-medium text-gray-700"
-                            >
-                                State
-                            </label>
-                            <input
-                                type="text"
-                                name="state"
-                                id="state"
-                                autoComplete="state"
-                                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                value={search.state}
-                                onChange={(e) =>
-                                    setSearch({
-                                        ...search,
-                                        state: e.target.value,
-                                    })
-                                }
-                            />
-                        </div>
-                        <div className="w-1/2">
-                            <label
-                                htmlFor="zip"
-                                className="block text-sm font-medium text-gray-700"
-                            >
-                                Zip
-                            </label>
-                            <input
-                                type="text"
-                                name="zip"
-                                id="zip"
-                                autoComplete="zip"
-                                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                value={search.zip}
-                                onChange={(e) =>
-                                    setSearch({
-                                        ...search,
-                                        zip: e.target.value,
-                                    })
-                                }
-                            />
+                        <div className="flex flex-row items-center gap-2">
+                            <div className="w-full">
+                                <label htmlFor="city" className={labelStyle}>
+                                    City
+                                </label>
+                                <input
+                                    type="text"
+                                    name="city"
+                                    id="city"
+                                    value={search.city}
+                                    onChange={(e) =>
+                                        setSearch({
+                                            ...search,
+                                            city: e.target.value,
+                                        })
+                                    }
+                                    className={inputStyle}
+                                />
+                            </div>
+                            <div className="w-full">
+                                <label htmlFor="state" className={labelStyle}>
+                                    State
+                                </label>
+                                <input
+                                    type="text"
+                                    name="state"
+                                    id="state"
+                                    value={search.state}
+                                    onChange={(e) =>
+                                        setSearch({
+                                            ...search,
+                                            state: e.target.value,
+                                        })
+                                    }
+                                    className={inputStyle}
+                                />
+                            </div>
+                            <div className="w-full">
+                                <label htmlFor="zip" className={labelStyle}>
+                                    Zip
+                                </label>
+                                <input
+                                    type="text"
+                                    name="zip"
+                                    id="zip"
+                                    value={search.zip}
+                                    onChange={(e) =>
+                                        setSearch({
+                                            ...search,
+                                            zip: e.target.value,
+                                        })
+                                    }
+                                    className={inputStyle}
+                                />
+                            </div>
                         </div>
                     </div>
                 )}
-                <div className="flex flex-col items-center justify-center w-1/2">
-                    <button
-                        type="button"
-                        className="text-sm font-medium text-gray-700"
-                        onClick={() => setIsAdvancedSearch(!isAdvancedSearch)}
-                    >
-                        {isAdvancedSearch ? "Hide" : "Show"} Advanced Search
-                    </button>
-                    <button
-                        type="submit"
-                        className="mt-2 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600"
-                    >
-                        Search
-                    </button>
+                <div className="flex justify-center w-full">
+                    <div className="flex flex-row items-center gap-2">
+                        <div className="w-1/2">
+                            <button
+                                type="button"
+                                className="mt-1 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-gray-700 bg-gray-200 hover:bg-gray-300"
+                                onClick={() =>
+                                    setIsAdvancedSearch(!isAdvancedSearch)
+                                }
+                            >
+                                {isAdvancedSearch
+                                    ? "Hide Advanced Search"
+                                    : "Show Advanced Search"}
+                            </button>
+                        </div>
+                        <div className="w-1/2">{searchButton}</div>
+                    </div>
                 </div>
             </form>
         </div>
