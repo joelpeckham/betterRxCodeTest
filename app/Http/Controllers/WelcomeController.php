@@ -17,14 +17,23 @@ class WelcomeController extends Controller
     $zip = @$request['zip'];
     $taxonomy = @$request['taxonomyDescription'];
     $npi = @$request['npiNumber'];
+    $page = @$request['page'];
+    if (!$page) {
+      $page = 1;
+    }
+    $skip = ($page - 1) * 10;
+    $limit = 11;
     $registryURL = 'https://npiregistry.cms.hhs.gov/api/?number=' . $npi
       . '&enumeration_type=&taxonomy_description=' . $taxonomy
       . '&name_purpose=&first_name=' . $firstName
       . '&use_first_name_alias=&last_name=' . $lastName
       . '&organization_name=&address_purpose=&city=' . $city
-      . '&state='.$state
-      .'&postal_code='.$zip
-      .'&country_code=&limit=&skip=&pretty=&version=2.1';
+      . '&state=' . $state
+      . '&postal_code=' . $zip
+      . '&country_code=&limit=' . $limit
+      . '&skip=' . $skip
+      . '&pretty=&version=2.1';
+    error_log($registryURL);
     $curl = curl_init();
     curl_setopt_array(
       $curl,

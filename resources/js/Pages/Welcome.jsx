@@ -51,8 +51,10 @@ const header = (
 
 export default function Welcome({ searchRes, laravelVersion, phpVersion }) {
     console.log(searchRes);
+    const returnedResults = searchRes[1]["result_count"] || 0;
+    const morePages = returnedResults ? searchRes[1]["result_count"] > 10 : false;
     return (
-        <div className="relative h-full w-full">
+        <div className="relative w-full">
             <Head title="NPI Search" />
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 {header}
@@ -61,10 +63,11 @@ export default function Welcome({ searchRes, laravelVersion, phpVersion }) {
             </div>
 
             {searchRes[1] && searchRes[1]["result_count"] > 0 && (
-                <>
-                <Results searchResult={searchRes[1]} />
-                </>
+                <div className="my-5">
+                <Results searchResult={searchRes} pageNumber={parseInt(searchRes[0].page)} morePages={morePages} />
+                </div>
             )}
+            <div className="h-12"></div>
             {background}
         </div>
     );

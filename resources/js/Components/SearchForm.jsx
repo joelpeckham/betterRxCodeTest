@@ -8,18 +8,23 @@ import React, { useState, useEffect, useRef } from "react";
 import { router, usePage } from "@inertiajs/react";
 import autoAnimate from "@formkit/auto-animate";
 
-const SearchForm = ({ defaults }) => {
+const defaultSearch = {
+    firstName: "",
+    lastName: "",
+    npiNumber: "",
+    taxonomyDescription: "",
+    city: "",
+    state: "",
+    zip: "",
+    page: 1,
+};
+
+const SearchForm = ({ response }) => {
     const { errors } = usePage().props;
-    const [search, setSearch] = useState(defaults);
-    let defaultAdvancedSearch =
-        defaults.npiNumber ||
-        defaults.taxonomyDescription ||
-        defaults.city ||
-        defaults.state ||
-        defaults.zip;
-    const [isAdvancedSearch, setIsAdvancedSearch] = useState(
-        defaultAdvancedSearch
-    );
+    response = { ...response, ...defaultSearch };
+    const [search, setSearch] = useState(response);
+
+    const [isAdvancedSearch, setIsAdvancedSearch] = useState(false);
 
     const parentRef = useRef(null);
 
@@ -106,7 +111,11 @@ const SearchForm = ({ defaults }) => {
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
-                    router.get("/", search);
+                    search.page = 1;
+                    router.get("/", search, {
+                        preserveScroll: true,
+                        preserveState: true,
+                    });
                 }}
                 ref={parentRef}
             >
@@ -214,9 +223,9 @@ const SearchForm = ({ defaults }) => {
                     <div className="w-full sm:w-1/2">
                         <button
                             type="submit"
-                            className="mt-1 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-indigo-600"
+                            className="mt-1 inline-flex w-full items-center justify-center gap-1 rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-lg font-bold text-white shadow-sm hover:bg-indigo-600"
                         >
-                            Search
+                            Search <span className="text-3xl">⌕</span>
                         </button>
                     </div>
                     <div className="w-full sm:w-1/2">
@@ -225,21 +234,10 @@ const SearchForm = ({ defaults }) => {
                             className="w-full text-center text-sm text-indigo-600 hover:text-indigo-500"
                             onClick={() => {
                                 setIsAdvancedSearch(!isAdvancedSearch);
-                                if (isAdvancedSearch) {
-                                    setSearch({
-                                        firstName: search.firstName,
-                                        lastName: search.lastName,
-                                        npiNumber: "",
-                                        taxonomyDescription: "",
-                                        city: "",
-                                        state: "",
-                                        zip: "",
-                                    });
-                                }
                             }}
                         >
                             {isAdvancedSearch
-                                ? "Cancel advanced search ✗"
+                                ? "Hide advanced search ✗"
                                 : "Show advanced search ↓"}
                         </button>
                     </div>
