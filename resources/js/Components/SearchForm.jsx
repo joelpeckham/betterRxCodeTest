@@ -5,19 +5,12 @@
 // Path: resources/js/Components/SearchForm.jsx
 
 import React, { useState, useEffect, useRef } from "react";
-import { router } from "@inertiajs/react";
+import { router, usePage } from "@inertiajs/react";
 import autoAnimate from "@formkit/auto-animate";
 
-const SearchForm = () => {
-    const [search, setSearch] = useState({
-        firstName: "",
-        lastName: "",
-        npiNumber: "",
-        taxonomyDescription: "",
-        city: "",
-        state: "",
-        zip: "",
-    });
+const SearchForm = ({defaults}) => {
+    const { errors } = usePage().props;
+    const [search, setSearch] = useState(defaults);
     const [isAdvancedSearch, setIsAdvancedSearch] = useState(false);
 
     const parentRef = useRef(null);
@@ -32,12 +25,80 @@ const SearchForm = () => {
     const inputStyle =
         "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md";
 
+    const stateSelect = (
+        <select
+            id="state"
+            name="state"
+            autoComplete="state"
+            className={inputStyle}
+            value={search.state}
+            onChange={(e) => handleChange(e)}
+        >
+            <option value="">Select a state</option>
+            <option value="AL">Alabama</option>
+            <option value="AK">Alaska</option>
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option>
+            <option value="DE">Delaware</option>
+            <option value="DC">District Of Columbia</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="HI">Hawaii</option>
+            <option value="ID">Idaho</option>
+            <option value="IL">Illinois</option>
+            <option value="IN">Indiana</option>
+            <option value="IA">Iowa</option>
+            <option value="KS">Kansas</option>
+            <option value="KY">Kentucky</option>
+            <option value="LA">Louisiana</option>
+            <option value="ME">Maine</option>
+            <option value="MD">Maryland</option>
+            <option value="MA">Massachusetts</option>
+            <option value="MI">Michigan</option>
+            <option value="MN">Minnesota</option>
+            <option value="MS">Mississippi</option>
+            <option value="MO">Missouri</option>
+            <option value="MT">Montana</option>
+            <option value="NE">Nebraska</option>
+            <option value="NV">Nevada</option>
+            <option value="NH">New Hampshire</option>
+            <option value="NJ">New Jersey</option>
+            <option value="NM">New Mexico</option>
+            <option value="NY">New York</option>
+            <option value="NC">North Carolina</option>
+            <option value="ND">North Dakota</option>
+            <option value="OH">Ohio</option>
+            <option value="OK">Oklahoma</option>
+            <option value="OR">Oregon</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="RI">Rhode Island</option>
+            <option value="SC">South Carolina</option>
+            <option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option>
+            <option value="TX">Texas</option>
+            <option value="UT">Utah</option>
+            <option value="VT">Vermont</option>
+            <option value="VA">Virginia</option>
+            <option value="WA">Washington</option>
+            <option value="WV">West Virginia</option>
+            <option value="WI">Wisconsin</option>
+            <option value="WY">Wyoming</option>
+        </select>
+    );
+
+    function handleChange(e) {
+        setSearch({ ...search, [e.target.name]: e.target.value });
+    }
+
     return (
         <div className="mt-10">
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
-                    router.get("/search", search);
+                    router.get("/", search);
                 }}
                 ref={parentRef}
             >
@@ -51,12 +112,7 @@ const SearchForm = () => {
                             name="firstName"
                             id="firstName"
                             value={search.firstName}
-                            onChange={(e) =>
-                                setSearch({
-                                    ...search,
-                                    firstName: e.target.value,
-                                })
-                            }
+                            onChange={(e) => handleChange(e)}
                             className={inputStyle}
                         />
                     </div>
@@ -69,12 +125,7 @@ const SearchForm = () => {
                             name="lastName"
                             id="lastName"
                             value={search.lastName}
-                            onChange={(e) =>
-                                setSearch({
-                                    ...search,
-                                    lastName: e.target.value,
-                                })
-                            }
+                            onChange={(e) => handleChange(e)}
                             className={inputStyle}
                         />
                     </div>
@@ -94,12 +145,7 @@ const SearchForm = () => {
                                     name="npiNumber"
                                     id="npiNumber"
                                     value={search.npiNumber}
-                                    onChange={(e) =>
-                                        setSearch({
-                                            ...search,
-                                            npiNumber: e.target.value,
-                                        })
-                                    }
+                                    onChange={(e) => handleChange(e)}
                                     className={inputStyle}
                                 />
                             </div>
@@ -115,12 +161,7 @@ const SearchForm = () => {
                                     name="taxonomyDescription"
                                     id="taxonomyDescription"
                                     value={search.taxonomyDescription}
-                                    onChange={(e) =>
-                                        setSearch({
-                                            ...search,
-                                            taxonomyDescription: e.target.value,
-                                        })
-                                    }
+                                    onChange={(e) => handleChange(e)}
                                     className={inputStyle}
                                 />
                             </div>
@@ -135,12 +176,7 @@ const SearchForm = () => {
                                     name="city"
                                     id="city"
                                     value={search.city}
-                                    onChange={(e) =>
-                                        setSearch({
-                                            ...search,
-                                            city: e.target.value,
-                                        })
-                                    }
+                                    onChange={(e) => handleChange(e)}
                                     className={inputStyle}
                                 />
                             </div>
@@ -148,19 +184,7 @@ const SearchForm = () => {
                                 <label htmlFor="state" className={labelStyle}>
                                     State
                                 </label>
-                                <input
-                                    type="text"
-                                    name="state"
-                                    id="state"
-                                    value={search.state}
-                                    onChange={(e) =>
-                                        setSearch({
-                                            ...search,
-                                            state: e.target.value,
-                                        })
-                                    }
-                                    className={inputStyle}
-                                />
+                                {stateSelect}
                             </div>
                             <div className="w-full">
                                 <label htmlFor="zip" className={labelStyle}>
@@ -171,12 +195,7 @@ const SearchForm = () => {
                                     name="zip"
                                     id="zip"
                                     value={search.zip}
-                                    onChange={(e) =>
-                                        setSearch({
-                                            ...search,
-                                            zip: e.target.value,
-                                        })
-                                    }
+                                    onChange={(e) => handleChange(e)}
                                     className={inputStyle}
                                 />
                             </div>

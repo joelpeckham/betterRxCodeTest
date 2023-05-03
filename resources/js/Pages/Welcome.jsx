@@ -4,7 +4,7 @@ import ApplicationLogo from "@/Components/ApplicationLogo";
 import { Link, Head } from "@inertiajs/react";
 
 const background = (
-    <div className="absolute right-0 top-0 -z-10 h-full w-full overflow-hidden opacity-40">
+    <div className="absolute top-0 right-0 -z-10 h-full min-h-screen w-full overflow-hidden opacity-40">
         <div
             className="absolute"
             style={{
@@ -48,16 +48,24 @@ const header = (
     </div>
 );
 
-export default function Welcome({ auth, laravelVersion, phpVersion }) {
+export default function Welcome({ searchRes, laravelVersion, phpVersion }) {
     return (
-        <>
+        <div className="relative h-full w-full">
             <Head title="NPI Search" />
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 {header}
                 <div className="my-4 w-full border-b-2 border-gray-300"></div>
-                <SearchForm />
+                <SearchForm defaults={searchRes[0]} />
             </div>
+
+            {searchRes && (
+                <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                    <pre className="whitespace-pre-wrap">
+                        {JSON.stringify(searchRes, null, 2)}
+                    </pre>
+                </div>
+            )}
             {background}
-        </>
+        </div>
     );
 }

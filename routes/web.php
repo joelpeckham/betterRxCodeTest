@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SearchController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,7 +26,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('search')->name('search')->uses([SearchController::class, 'show']);
+Route::get('/')->uses([WelcomeController::class, 'show']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

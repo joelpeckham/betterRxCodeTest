@@ -5,19 +5,18 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 
-class SearchController extends Controller
+class WelcomeController extends Controller
 {
   public function show()
   {
     $request = request()->all();
-    $firstName = $request['firstName'];
-    $lastName = $request['lastName'];
-    $city = $request['city'];
-    $state = $request['state'];
-    $zip = $request['zip'];
-    $taxonomy = $request['taxonomyDescription'];
-    $npi = $request['npiNumber'];
-
+    $firstName = @$request['firstName'];
+    $lastName = @$request['lastName'];
+    $city = @$request['city'];
+    $state = @$request['state'];
+    $zip = @$request['zip'];
+    $taxonomy = @$request['taxonomyDescription'];
+    $npi = @$request['npiNumber'];
     $registryURL = 'https://npiregistry.cms.hhs.gov/api/?number=' . $npi
       . '&enumeration_type=&taxonomy_description=' . $taxonomy
       . '&name_purpose=&first_name=' . $firstName
@@ -27,7 +26,6 @@ class SearchController extends Controller
       .'&postal_code='.$zip
       .'&country_code=&limit=&skip=&pretty=&version=2.1';
     $curl = curl_init();
-
     curl_setopt_array(
       $curl,
       array(
@@ -42,13 +40,13 @@ class SearchController extends Controller
       )
     );
 
-    $response = curl_exec($curl);
+    $res = curl_exec($curl);
 
     curl_close($curl);
     return Inertia::render(
-      'Search',
+      'Welcome',
       [
-        'searchResult' => [$request, json_decode($response)],
+        'searchRes' => [$request, json_decode($res)],
       ]
     );
   }
