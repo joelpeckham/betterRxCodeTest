@@ -8,10 +8,18 @@ import React, { useState, useEffect, useRef } from "react";
 import { router, usePage } from "@inertiajs/react";
 import autoAnimate from "@formkit/auto-animate";
 
-const SearchForm = ({defaults}) => {
+const SearchForm = ({ defaults }) => {
     const { errors } = usePage().props;
     const [search, setSearch] = useState(defaults);
-    const [isAdvancedSearch, setIsAdvancedSearch] = useState(false);
+    let defaultAdvancedSearch =
+        defaults.npiNumber ||
+        defaults.taxonomyDescription ||
+        defaults.city ||
+        defaults.state ||
+        defaults.zip;
+    const [isAdvancedSearch, setIsAdvancedSearch] = useState(
+        defaultAdvancedSearch
+    );
 
     const parentRef = useRef(null);
 
@@ -215,9 +223,20 @@ const SearchForm = ({defaults}) => {
                         <button
                             type="button"
                             className="w-full text-center text-sm text-indigo-600 hover:text-indigo-500"
-                            onClick={() =>
-                                setIsAdvancedSearch(!isAdvancedSearch)
-                            }
+                            onClick={() => {
+                                setIsAdvancedSearch(!isAdvancedSearch);
+                                if (isAdvancedSearch) {
+                                    setSearch({
+                                        firstName: search.firstName,
+                                        lastName: search.lastName,
+                                        npiNumber: "",
+                                        taxonomyDescription: "",
+                                        city: "",
+                                        state: "",
+                                        zip: "",
+                                    });
+                                }
+                            }}
                         >
                             {isAdvancedSearch
                                 ? "Close advanced search ✗"
