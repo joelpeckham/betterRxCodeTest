@@ -28,15 +28,6 @@ const SearchForm = () => {
         }
     }, [parent]);
 
-    const searchButton = (
-        <button
-            type="submit"
-            className="mt-1 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600"
-        >
-            Search
-        </button>
-    );
-
     const labelStyle = "block text-sm font-medium text-gray-700";
     const inputStyle =
         "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md";
@@ -50,7 +41,7 @@ const SearchForm = () => {
                 }}
                 ref={parentRef}
             >
-                <div className="flex flex-row items-center gap-2">
+                <div className="flex flex-row flex-wrap items-center gap-2 sm:flex-nowrap">
                     <div className="w-full">
                         <label htmlFor="firstName" className={labelStyle}>
                             First Name
@@ -90,7 +81,7 @@ const SearchForm = () => {
                 </div>
                 {isAdvancedSearch && (
                     <div>
-                        <div className="flex flex-row items-center gap-2">
+                        <div className="mt-1 flex flex-row flex-wrap items-center gap-2  sm:flex-nowrap">
                             <div className="w-full">
                                 <label
                                     htmlFor="npiNumber"
@@ -134,7 +125,7 @@ const SearchForm = () => {
                                 />
                             </div>
                         </div>
-                        <div className="flex flex-row items-center gap-2">
+                        <div className="mt-1 flex flex-row flex-wrap items-center gap-2  sm:flex-nowrap">
                             <div className="w-full">
                                 <label htmlFor="city" className={labelStyle}>
                                     City
@@ -192,22 +183,27 @@ const SearchForm = () => {
                         </div>
                     </div>
                 )}
-                <div className="flex justify-center w-full">
-                    <div className="flex flex-row items-center gap-2">
-                        <div className="w-1/2">
-                            <button
-                                type="button"
-                                className="mt-1 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-gray-700 bg-gray-200 hover:bg-gray-300"
-                                onClick={() =>
-                                    setIsAdvancedSearch(!isAdvancedSearch)
-                                }
-                            >
-                                {isAdvancedSearch
-                                    ? "Hide Advanced Search"
-                                    : "Show Advanced Search"}
-                            </button>
-                        </div>
-                        <div className="w-1/2">{searchButton}</div>
+                <div className="mt-4 flex w-full flex-col flex-wrap items-center justify-center gap-2 sm:flex-nowrap">
+                    <div className="w-full sm:w-1/2">
+                        <button
+                            type="submit"
+                            className="mt-1 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-indigo-600"
+                        >
+                            Search
+                        </button>
+                    </div>
+                    <div className="w-full sm:w-1/2">
+                        <button
+                            type="button"
+                            className="w-full text-center text-sm text-indigo-600 hover:text-indigo-500"
+                            onClick={() =>
+                                setIsAdvancedSearch(!isAdvancedSearch)
+                            }
+                        >
+                            {isAdvancedSearch
+                                ? "Close advanced search ✗"
+                                : "Show advanced search ↓"}
+                        </button>
                     </div>
                 </div>
             </form>
