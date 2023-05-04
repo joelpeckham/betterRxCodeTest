@@ -225,7 +225,7 @@ const SearchForm = ({ response }) => {
                     <div className="w-full sm:w-1/2">
                         <button
                             type="button"
-                            className="w-full text-center text-sm text-indigo-600 hover:text-indigo-500"
+                            className="w-full text-center text-sm text-indigo-700 hover:text-indigo-500"
                             onClick={() => {
                                 setIsAdvancedSearch(!isAdvancedSearch);
                             }}
