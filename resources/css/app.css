@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ReactModal__Body--open {
+    overflow: hidden;
+}
+.ReactModal__Content.ReactModal__Content--after-open {
+    padding: 0px !important;
+    border: none !important;
+    background: none !important;
+    inset:40px !important;
+}
+
+@media screen and (min-width: 640px) {
+    .ReactModal__Content.ReactModal__Content--after-open {
+        inset: 100px !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .ReactModal__Content.ReactModal__Content--after-open {
+        inset:  100px 150px !important;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .ReactModal__Content.ReactModal__Content--after-open {
+        inset: 120px 250px !important;
+    }
+}
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* style={{
+                    overlay: {
+                        backgroundColor: "rgba(0, 0, 0, 0.3)",
+                    },
+                    content: {
+                        padding: "0",
+                        border: "none",
+                        background: "none",
+                        overflow: "visible",
+                        inset:"40px"
+                    },
+                }} */

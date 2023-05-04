@@ -32,7 +32,7 @@ const background = (
 );
 
 const header = (
-    <div className="mx-auto max-w-2xl lg:mx-0">
+    <div className="mx-auto max-w-2xl md:mx-0">
         <div className="mt-10 flex flex-row items-center">
             <Link href="/">
                 <ApplicationLogo />
@@ -49,23 +49,38 @@ const header = (
     </div>
 );
 
-export default function Welcome({ searchRes, laravelVersion, phpVersion }) {
-    console.log(searchRes);
+const noResults = (
+    <div className="mx-auto flex max-w-6xl justify-center">
+        <div className="my-4 rounded-lg bg-white shadow">
+            <div className="px-4 py-5 sm:p-6">
+                <p className="text-sm leading-6 text-gray-900">
+                    Sorry, no results found. Please try again.
+                </p>
+            </div>
+        </div>
+    </div>
+);
+
+export default function Welcome({ searchRes }) {
+    // console.log(searchRes);
     return (
         <div className="relative w-full">
             <Head title="NPI Search" />
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-6xl px-6 lg:px-8">
                 {header}
                 <div className="my-4 w-full border-b-2 border-gray-300"></div>
-                <SearchForm defaults={searchRes[0]} />
+                <SearchForm defaults={searchRes["req"]} />
             </div>
 
-            {searchRes[1] && searchRes[1]["result_count"] > 0 && (
+            {searchRes["res"] &&
+                searchRes["res"]["result_count"] == 0 && noResults}
+
+            {searchRes["res"] && searchRes["res"]["result_count"] > 0 && (
                 <div className="my-5">
                     <Results
                         searchResult={searchRes}
-                        pageNumber={parseInt(searchRes[0].page)}
-                        morePages={searchRes[1]["result_count"] > 10}
+                        pageNumber={parseInt(searchRes["req"].page)}
+                        morePages={searchRes["res"]["result_count"] > 50}
                     />
                 </div>
             )}

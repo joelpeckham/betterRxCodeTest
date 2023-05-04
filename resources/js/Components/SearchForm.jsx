@@ -1,9 +1,3 @@
-// Search Form Component
-// A user should be able to search by first name, last name, npi number, taxonomy description, city, state and zip.
-// Everything except first and last name should be under an "advanced search" toggle.
-
-// Path: resources/js/Components/SearchForm.jsx
-
 import React, { useState, useEffect, useRef } from "react";
 import { router, usePage } from "@inertiajs/react";
 import autoAnimate from "@formkit/auto-animate";
