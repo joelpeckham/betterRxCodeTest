@@ -93,7 +93,12 @@
 
 import React from "react";
 
-export default function ProviderListItem({ provider, selected, setSelected, index }) {
+export default function ProviderListItem({
+    provider,
+    selected,
+    setSelected,
+    index,
+}) {
     const providerName = () => {
         if (provider.basic.organization_name) {
             return provider.basic.organization_name;
@@ -109,25 +114,22 @@ export default function ProviderListItem({ provider, selected, setSelected, inde
         }
     };
 
-    const hideScrollbars = {
-        scrollbarWidth: "none",
-        msOverflowStyle: "none",
-    };
 
     return (
         <li
             className={`${
-                selected==index ? "bg-gray-200" : "hover:bg-gray-50"
+                selected == index ? "bg-gray-200" : "hover:bg-gray-50"
             } cursor-pointer rounded-md`}
             onClick={() => setSelected(index)}
-
         >
             <div className="px-4 py-4 sm:px-6">
-                <div className="flex flex-col justify-between gap-1 lg:gap-2  lg:flex-row lg:items-center">
+                <div className="flex flex-col justify-between gap-1 lg:flex-row  lg:items-center lg:gap-2">
                     <p className="truncate text-sm font-medium text-indigo-600 lg:overflow-visible">
                         {providerName()}
                     </p>
-                    <p className="-ml-1 lg:ml-0 inline-flex max-w-fit overflow-x-scroll whitespace-nowrap rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
+                    <p
+                        className="-ml-1 inline-flex max-w-fit overflow-x-hidden whitespace-nowrap rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800 lg:ml-0"
+                    >
                         {provider.taxonomies[0].desc}
                     </p>
                 </div>

@@ -70,7 +70,7 @@ export default function Results({
                             subtitle="Select a provider to view details."
                             footer={paginationFooter}
                         >
-                            <ul className="max-h-96 divide-y divide-gray-200 overflow-y-scroll">
+                            <ul className="h-full divide-y divide-gray-200">
                                 {providerList.map((provider, index) => {
                                     return (
                                         <ProviderListItem
