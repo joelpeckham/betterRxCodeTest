@@ -5,7 +5,7 @@ import { Head } from "@inertiajs/react";
 import Results from "@/Components/Results";
 
 export default function Welcome({ searchData }) {
-    console.log(searchData);
+    // console.log(searchData);
     return (
         <div className="relative w-full">
             <Head title="NPI Search" />

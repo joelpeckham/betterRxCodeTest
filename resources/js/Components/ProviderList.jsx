@@ -1,6 +1,5 @@
 import ProviderListItem from "./ProviderListItem";
 const ProviderList = ({providerData, selectedProvider, setSelectedProvider}) => {
-    console.log(providerData);
     const providerList = providerData.slice(0, 50);
     return (
         <ul className="h-full divide-y divide-gray-200">
