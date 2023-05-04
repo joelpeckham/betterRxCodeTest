@@ -13,7 +13,7 @@ const ReturnToTop = (sectionId) => {
     return (
         <div
             className={`fixed bottom-0 right-0 mb-4 mr-4 transition-opacity ${
-                scrollPosition > 300 ? "opacity-100" : "opacity-0"
+                scrollPosition > 450 ? "opacity-100" : "opacity-0"
             }`}
         >
             <a href={`#${sectionId}`}>

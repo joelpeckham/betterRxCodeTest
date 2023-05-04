@@ -38,6 +38,14 @@ On Ubuntu 22.04:
 - ✅ Firefox
 - ❌ Falcon (Had similar issues to Safari on MacOs.)
 
+On Windows 10:
+- ✅ Chrome
+- ✅ Firefox
+
+On iPhone:
+- ✅ Safari
+- ✅ Chrome
+
 ### LightHouse Report
 
 ![LightHouse Report](https://jpeckham.com/npi_lighthouse.webp)
