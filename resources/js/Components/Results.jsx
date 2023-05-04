@@ -68,11 +68,13 @@ export default function Results({searchData}) {
         </div>
     );
 
+    const resultsShowing = providerList.length > 50 ? 50 : providerList.length;
+
     return (
         <div className="w-full">
             <Card
                 title="Search Results"
-                subtitle="Select a provider to view details."
+                subtitle={`Showing ${resultsShowing} result${resultsShowing == 1 ? "" : "s"}.`}
                 footer={paginationFooter}
             >
                 <ProviderList providerData={providerList} selectedProvider = {selected} setSelectedProvider={setSelected} />
