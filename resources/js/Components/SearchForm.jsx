@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { router, usePage } from "@inertiajs/react";
 import autoAnimate from "@formkit/auto-animate";
+import { BiSearchAlt } from "react-icons/bi";
 
 const defaultSearch = {
     firstName: "",
@@ -234,7 +235,7 @@ const SearchForm = ({ response }) => {
                             type="submit"
                             className="mt-1 inline-flex w-full items-center justify-center gap-1 rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-lg font-bold text-white shadow-sm hover:bg-indigo-500"
                         >
-                            Search <span className="text-3xl">⌕</span>
+                            Search <BiSearchAlt />
                         </button>
                     </div>
                     <div className="w-full sm:w-1/2">
