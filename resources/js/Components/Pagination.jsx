@@ -1,9 +1,6 @@
-
-
-import { router } from "@inertiajs/react";
 const numberButton = (number, page, increase, decrease) => {
         let isSelected = number == page;
-    
+
         const clicked = () => {
             if (number > page) {
                 return increase;
@@ -12,7 +9,7 @@ const numberButton = (number, page, increase, decrease) => {
                 return decrease;
             }
         };
-                
+
         const selectedClasses =
             "focus:shadow-outline h-10 w-10 rounded-full border border-r-0 border-indigo-600 bg-indigo-600 text-white transition-colors duration-150";
         const unselectedClasses =
@@ -38,7 +35,7 @@ const Pagination = ({ page, increase, decrease, isMorePages }) => {
     if (isMorePages) {
         visiblePages.push(page + 1);
     }
-    
+
     return (
         <nav aria-label="Page navigation">
             <ul className="inline-flex space-x-2">
