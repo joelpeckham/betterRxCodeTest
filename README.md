@@ -3,6 +3,10 @@
 I created this NPI Record Viewer as part of the hiring process for BetterRx. The application is fully deployed at
 [npi.jpeckham.com](https://npi.jpeckham.com). The application is built using PHP, Laravel, and React with InertiaJS as the glue.
 
+## Screenshot
+
+![Screenshot of https://npi.jpeckham.com](https://jpeckham.com/npi_screen.webp)
+
 ## Installation
 Once you have cloned the repository, you will need to install the dependencies for both the PHP and React applications.
 ```bash
