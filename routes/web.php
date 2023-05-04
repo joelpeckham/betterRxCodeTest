@@ -25,3 +25,4 @@ Route::get('/', function () {
 });
 
 Route::get('/')->uses([WelcomeController::class, 'show']);
+Route::get('/search')->uses([WelcomeController::class, 'search']);

@@ -15,15 +15,15 @@ const numberButton = (number, page, increase, decrease) => {
     const unselectedClasses =
         "focus:shadow-outline h-10 w-10 rounded-full text-indigo-600 transition-colors duration-150 hover:bg-indigo-100";
     return (
-        <li><button
-            key={number}
-            className={isSelected ? selectedClasses : unselectedClasses}
-            onClick={clicked()}
-            aria-label={`Page ${number}`}
-        >
-            {number}
-        </button></li>
-
+        <li key={number}>
+            <button
+                className={isSelected ? selectedClasses : unselectedClasses}
+                onClick={clicked()}
+                aria-label={`Page ${number}`}
+            >
+                {number}
+            </button>
+        </li>
     );
 };
 

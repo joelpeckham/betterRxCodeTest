@@ -1,22 +1,34 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import ProviderListItem from "./ProviderListItem";
+import ProviderList from "./ProviderList";
 import ProviderDetail from "./ProviderDetail";
 import Card from "./Card";
 import Pagination from "./Pagination";
+import NoResults from "./NoResults";
 import { router } from "@inertiajs/react";
 
 Modal.setAppElement("#app");
 
-export default function Results({ searchResult, pageNumber, morePages }) {
+export default function Results({searchData}) {
+
     const [selected, setSelected] = useState(null);
-    let providerList = searchResult["res"]["results"].slice(0, 51);
-    let request = searchResult["req"];
+    const providerList = searchData["res"]["results"];
+
+    if (providerList.length === 0) {
+        return (
+            <NoResults />
+        );
+    }
+
+    const morePages = searchData["res"]["result_count"] > 50;
+    const pageNumber = parseInt(searchData["req"]["page"]);
+
+    let request = searchData["req"];
 
     const increasePageNumber = () => {
         if (morePages) {
             request.page = pageNumber + 1;
-            router.get("/", request, {
+            router.get("/search", request, {
                 preserveScroll: true,
                 preserveState: true,
             });
@@ -27,7 +39,7 @@ export default function Results({ searchResult, pageNumber, morePages }) {
         if (request.page < 1) {
             request.page = 1;
         }
-        router.get("/", request, { preserveScroll: true, preserveState: true });
+        router.get("/search", request, { preserveScroll: true, preserveState: true });
     };
 
     const paginationFooter = (
@@ -57,25 +69,13 @@ export default function Results({ searchResult, pageNumber, morePages }) {
     );
 
     return (
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="w-full">
             <Card
                 title="Search Results"
                 subtitle="Select a provider to view details."
                 footer={paginationFooter}
             >
-                <ul className="h-full divide-y divide-gray-200">
-                    {providerList.map((provider, index) => {
-                        return (
-                            <ProviderListItem
-                                key={index}
-                                index={index}
-                                provider={provider}
-                                selected={selected}
-                                setSelected={setSelected}
-                            />
-                        );
-                    })}
-                </ul>
+                <ProviderList providerData={providerList} selectedProvider = {selected} setSelectedProvider={setSelected} />
             </Card>
             <Modal
                 isOpen={selected !== null}

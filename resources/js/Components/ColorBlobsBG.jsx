@@ -16,4 +16,33 @@ const ColorBlob = () => {
     );
 };
 
-export default ColorBlob;
+const ColorBlobsBG = () => {
+    return (
+        <div className="absolute right-0 top-0 -z-10 h-full min-h-screen w-full overflow-hidden opacity-40">
+            <div
+                className="absolute"
+                style={{
+                    width: "50vw",
+                    height: "50vw",
+                    bottom: "-20vw",
+                    right: "-20vw",
+                }}
+            >
+                <ColorBlob />
+            </div>
+            <div
+                className="absolute"
+                style={{
+                    width: "60vw",
+                    height: "60vw",
+                    bottom: "-40vw",
+                    left: "-40vw",
+                }}
+            >
+                <ColorBlob />
+            </div>
+        </div>
+    );
+};
+
+export default ColorBlobsBG;

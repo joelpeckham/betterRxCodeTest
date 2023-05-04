@@ -99,14 +99,23 @@ const SearchForm = ({ response }) => {
     function handleChange(e) {
         setSearch({ ...search, [e.target.name]: e.target.value });
     }
-
+    function errorElement(fieldName) {
+        if (errors[fieldName]) {
+            return (
+                <>
+                    | <span className="text-red-600 text-xs">{errors[fieldName]}</span>
+                </>
+            );
+        }
+        return <></>;
+    }
     return (
         <div className="mt-10">
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
                     search.page = 1;
-                    router.get("/", search, {
+                    router.get("/search", search, {
                         preserveScroll: true,
                         preserveState: true,
                     });
@@ -116,7 +125,7 @@ const SearchForm = ({ response }) => {
                 <div className="flex flex-row flex-wrap items-center gap-2 sm:flex-nowrap">
                     <div className="w-full">
                         <label htmlFor="firstName" className={labelStyle}>
-                            First Name
+                            First Name {errorElement("firstName")}
                         </label>
                         <input
                             type="text"
@@ -129,7 +138,7 @@ const SearchForm = ({ response }) => {
                     </div>
                     <div className="w-full">
                         <label htmlFor="lastName" className={labelStyle}>
-                            Last Name
+                            Last Name {errorElement("lastName")}
                         </label>
                         <input
                             type="text"
@@ -149,7 +158,7 @@ const SearchForm = ({ response }) => {
                                     htmlFor="npiNumber"
                                     className={labelStyle}
                                 >
-                                    NPI Number
+                                    NPI Number {errorElement("npiNumber")}
                                 </label>
                                 <input
                                     type="text"
@@ -162,15 +171,15 @@ const SearchForm = ({ response }) => {
                             </div>
                             <div className="w-full">
                                 <label
-                                    htmlFor="taxonomyDescription"
+                                    htmlFor="taxonomy_description"
                                     className={labelStyle}
                                 >
-                                    Taxonomy Description
+                                    Taxonomy Description {errorElement("taxonomy_description")}
                                 </label>
                                 <input
                                     type="text"
                                     name="taxonomyDescription"
-                                    id="taxonomyDescription"
+                                    id="taxonomy_description"
                                     value={search.taxonomyDescription}
                                     onChange={(e) => handleChange(e)}
                                     className={inputStyle}
@@ -180,7 +189,7 @@ const SearchForm = ({ response }) => {
                         <div className="mt-1 flex flex-row flex-wrap items-center gap-2  sm:flex-nowrap">
                             <div className="w-full">
                                 <label htmlFor="city" className={labelStyle}>
-                                    City
+                                    City {errorElement("city")}
                                 </label>
                                 <input
                                     type="text"
@@ -193,18 +202,18 @@ const SearchForm = ({ response }) => {
                             </div>
                             <div className="w-full">
                                 <label htmlFor="state" className={labelStyle}>
-                                    State
+                                    State {errorElement("state")}
                                 </label>
                                 {stateSelect}
                             </div>
                             <div className="w-full">
-                                <label htmlFor="zip" className={labelStyle}>
-                                    Zip
+                                <label htmlFor="postal_code" className={labelStyle}>
+                                    Zip {errorElement("postal_code")}
                                 </label>
                                 <input
                                     type="text"
                                     name="zip"
-                                    id="zip"
+                                    id="postal_code"
                                     value={search.zip}
                                     onChange={(e) => handleChange(e)}
                                     className={inputStyle}
