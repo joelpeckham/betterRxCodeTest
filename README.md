@@ -25,9 +25,25 @@ You can serve the application using the built-in PHP server.
 ```bash
 php artisan serve
 ```
-## Running Tests
+## Testing
+
+### Manual Testing
+On MacOs Ventura:
+- ✅ Chrome
+- ✅ Firefox
+- ❌ Safari (I had visual issues and poor rendering performance.)
+- ✅ Arc
+
+On Ubuntu 22.04:
+- ✅ Firefox
+- ❌ Falcon (Had similar issues to Safari on MacOs.)
+
+### LightHouse Report
+
+![LightHouse Report](https://jpeckham.com/npi_lighthouse.webp)
+
+### Automated Testing
 You can run the tests using the following command.
 ```bash
 cowsay "LOL just kidding, I didn't write any tests"
 ```
-
