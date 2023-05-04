@@ -1,29 +1,29 @@
 const numberButton = (number, page, increase, decrease) => {
-        let isSelected = number == page;
+    let isSelected = number == page;
 
-        const clicked = () => {
-            if (number > page) {
-                return increase;
-            }
-            if (number < page) {
-                return decrease;
-            }
-        };
-
-        const selectedClasses =
-            "focus:shadow-outline h-10 w-10 rounded-full border border-r-0 border-indigo-600 bg-indigo-600 text-white transition-colors duration-150";
-        const unselectedClasses =
-            "focus:shadow-outline h-10 w-10 rounded-full text-indigo-600 transition-colors duration-150 hover:bg-indigo-100";
-        return (
-            <button
-                key={number}
-                className={isSelected ? selectedClasses : unselectedClasses}
-                onClick={clicked()}
-            >
-                {number}
-            </button>
-        );
+    const clicked = () => {
+        if (number > page) {
+            return increase;
+        }
+        if (number < page) {
+            return decrease;
+        }
     };
+
+    const selectedClasses =
+        "focus:shadow-outline h-10 w-10 rounded-full border border-r-0 border-indigo-600 bg-indigo-600 text-white transition-colors duration-150";
+    const unselectedClasses =
+        "focus:shadow-outline h-10 w-10 rounded-full text-indigo-600 transition-colors duration-150 hover:bg-indigo-100";
+    return (
+        <button
+            key={number}
+            className={isSelected ? selectedClasses : unselectedClasses}
+            onClick={clicked()}
+        >
+            {number}
+        </button>
+    );
+};
 
 const Pagination = ({ page, increase, decrease, isMorePages }) => {
     page = parseInt(page);

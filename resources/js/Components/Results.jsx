@@ -10,8 +10,8 @@ Modal.setAppElement("#app");
 
 export default function Results({ searchResult, pageNumber, morePages }) {
     const [selected, setSelected] = useState(null);
-    let providerList = searchResult['res']["results"].slice(0, 51);
-    let request = searchResult['req'];
+    let providerList = searchResult["res"]["results"].slice(0, 51);
+    let request = searchResult["req"];
 
     const increasePageNumber = () => {
         if (morePages) {
