@@ -134,7 +134,7 @@ const SearchForm = ({ response }) => {
                             value={search.firstName}
                             onChange={(e) => handleChange(e)}
                             className={inputStyle}
-                            maxlength="35"
+                            maxlength="100"
                         />
                     </div>
                     <div className="w-full">
@@ -148,7 +148,7 @@ const SearchForm = ({ response }) => {
                             value={search.lastName}
                             onChange={(e) => handleChange(e)}
                             className={inputStyle}
-                            maxlength="35"
+                            maxlength="100"
                         />
                     </div>
                 </div>
@@ -169,7 +169,7 @@ const SearchForm = ({ response }) => {
                                     value={search.npiNumber}
                                     onChange={(e) => handleChange(e)}
                                     className={inputStyle}
-                                    maxlength="35"
+                                    maxlength="100"
                                 />
                             </div>
                             <div className="w-full">
@@ -202,7 +202,7 @@ const SearchForm = ({ response }) => {
                                     value={search.city}
                                     onChange={(e) => handleChange(e)}
                                     className={inputStyle}
-                                    maxlength="35"
+                                    maxlength="100"
                                 />
                             </div>
                             <div className="w-full">
@@ -222,7 +222,7 @@ const SearchForm = ({ response }) => {
                                     value={search.zip}
                                     onChange={(e) => handleChange(e)}
                                     className={inputStyle}
-                                    maxlength="35"
+                                    maxlength="15"
                                 />
                             </div>
                         </div>
