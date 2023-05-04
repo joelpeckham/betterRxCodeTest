@@ -15,13 +15,15 @@ const numberButton = (number, page, increase, decrease) => {
     const unselectedClasses =
         "focus:shadow-outline h-10 w-10 rounded-full text-indigo-600 transition-colors duration-150 hover:bg-indigo-100";
     return (
-        <button
+        <li><button
             key={number}
             className={isSelected ? selectedClasses : unselectedClasses}
             onClick={clicked()}
+            aria-label={`Page ${number}`}
         >
             {number}
-        </button>
+        </button></li>
+
     );
 };
 
@@ -43,6 +45,7 @@ const Pagination = ({ page, increase, decrease, isMorePages }) => {
                     <button
                         className="focus:shadow-outline flex h-10 w-10 items-center justify-center rounded-full text-indigo-600 transition-colors duration-150 hover:bg-indigo-100"
                         onClick={() => decrease()}
+                        aria-label="Back"
                     >
                         <svg
                             className="h-4 w-4 fill-current"
@@ -63,6 +66,7 @@ const Pagination = ({ page, increase, decrease, isMorePages }) => {
                     <button
                         className="focus:shadow-outline flex h-10 w-10 items-center justify-center rounded-full bg-white text-indigo-600 transition-colors duration-150 hover:bg-indigo-100"
                         onClick={() => increase()}
+                        aria-label="Next"
                     >
                         <svg
                             className="h-4 w-4 fill-current"

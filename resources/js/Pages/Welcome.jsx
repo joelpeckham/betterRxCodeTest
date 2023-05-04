@@ -33,7 +33,7 @@ const background = (
 
 const header = (
     <div className="mx-auto max-w-2xl md:mx-0">
-        <div className="mt-10 flex flex-row items-center">
+        <div className="mt-10 flex flex-row items-center justify-start">
             <Link href="/">
                 <ApplicationLogo />
             </Link>

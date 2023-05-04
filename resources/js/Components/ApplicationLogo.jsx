@@ -3,7 +3,7 @@ export default function ApplicationLogo(props) {
         <img
             src="/images/logo.png"
             alt="BetterRx Logo"
-            className="h-14 w-full object-contain"
+            className="h-14 object-contain"
             {...props}
         />
     );
