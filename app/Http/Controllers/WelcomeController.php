@@ -67,6 +67,13 @@ class WelcomeController extends Controller
             throw $error;
         }
 
+        if ($response->failed()) {
+            $error = \Illuminate\Validation\ValidationException::withMessages([
+                "firstName" => "API Call Failed",
+            ]);
+            throw $error;
+        }
+
         return Inertia::render("Welcome", [
             "searchData" => [
                 "req" => $request,
