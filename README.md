@@ -5,7 +5,7 @@ I created this NPI Record Viewer as part of the hiring process for BetterRx. The
 
 ## Screenshot
 
-![Screenshot of https://npi.jpeckham.com](https://jpeckham.com/npi_screen.webp)
+<a href="https://npi.jpeckham.com">![Screenshot of https://npi.jpeckham.com](https://jpeckham.com/npi_screen.webp)</a>
 
 ## Installation
 Once you have cloned the repository, you will need to install the dependencies for both the PHP and React applications.
