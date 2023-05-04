@@ -109,6 +109,11 @@ export default function ProviderListItem({ provider, selected, setSelected, inde
         }
     };
 
+    const hideScrollbars = {
+        scrollbarWidth: "none",
+        msOverflowStyle: "none",
+    };
+
     return (
         <li
             className={`${
@@ -122,7 +127,7 @@ export default function ProviderListItem({ provider, selected, setSelected, inde
                     <p className="truncate text-sm font-medium text-indigo-600 lg:overflow-visible">
                         {providerName()}
                     </p>
-                    <p className="-ml-1 lg:ml-0 inline-flex max-w-fit overflow-scroll whitespace-nowrap rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
+                    <p className="-ml-1 lg:ml-0 inline-flex max-w-fit overflow-x-scroll whitespace-nowrap rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
                         {provider.taxonomies[0].desc}
                     </p>
                 </div>

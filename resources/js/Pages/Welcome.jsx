@@ -5,7 +5,7 @@ import { Link, Head } from "@inertiajs/react";
 import Results from "@/Components/Results";
 
 const background = (
-    <div className="absolute top-0 right-0 -z-10 h-full min-h-screen w-full overflow-hidden opacity-40">
+    <div className="absolute right-0 top-0 -z-10 h-full min-h-screen w-full overflow-hidden opacity-40">
         <div
             className="absolute"
             style={{
@@ -51,8 +51,6 @@ const header = (
 
 export default function Welcome({ searchRes, laravelVersion, phpVersion }) {
     console.log(searchRes);
-    const returnedResults = searchRes[1]["result_count"] || 0;
-    const morePages = returnedResults ? searchRes[1]["result_count"] > 10 : false;
     return (
         <div className="relative w-full">
             <Head title="NPI Search" />
@@ -64,7 +62,11 @@ export default function Welcome({ searchRes, laravelVersion, phpVersion }) {
 
             {searchRes[1] && searchRes[1]["result_count"] > 0 && (
                 <div className="my-5">
-                <Results searchResult={searchRes} pageNumber={parseInt(searchRes[0].page)} morePages={morePages} />
+                    <Results
+                        searchResult={searchRes}
+                        pageNumber={parseInt(searchRes[0].page)}
+                        morePages={searchRes[1]["result_count"] > 10}
+                    />
                 </div>
             )}
             <div className="h-12"></div>

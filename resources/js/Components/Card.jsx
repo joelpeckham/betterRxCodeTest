@@ -14,7 +14,7 @@ export default function Card({ title, subtitle, children, footer }) {
                         {subtitle}
                     </p>
                 </div>
-                <div className="overflow-scroll px-4 py-5 sm:p-6">
+                <div className="px-4 py-5 sm:p-6">
                     {children}
                 </div>
             </div>
