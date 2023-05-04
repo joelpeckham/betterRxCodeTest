@@ -14,19 +14,19 @@
 
 @media screen and (min-width: 640px) {
     .ReactModal__Content.ReactModal__Content--after-open {
-        inset: 100px !important;
+        inset: 40px 100px !important;
     }
 }
 
 @media screen and (min-width: 768px) {
     .ReactModal__Content.ReactModal__Content--after-open {
-        inset:  100px 150px !important;
+        inset:  80px 150px !important;
     }
 }
 
 @media screen and (min-width: 1024px) {
     .ReactModal__Content.ReactModal__Content--after-open {
-        inset: 120px 250px !important;
+        inset: 110px 250px !important;
     }
 }
 
