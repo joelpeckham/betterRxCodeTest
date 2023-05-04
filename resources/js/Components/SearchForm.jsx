@@ -217,7 +217,7 @@ const SearchForm = ({ response }) => {
                     <div className="w-full sm:w-1/2">
                         <button
                             type="submit"
-                            className="mt-1 inline-flex w-full items-center justify-center gap-1 rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-lg font-bold text-white shadow-sm hover:bg-indigo-600"
+                            className="mt-1 inline-flex w-full items-center justify-center gap-1 rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-lg font-bold text-white shadow-sm hover:bg-indigo-500"
                         >
                             Search <span className="text-3xl">⌕</span>
                         </button>
