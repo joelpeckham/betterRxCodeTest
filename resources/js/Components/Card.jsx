@@ -1,5 +1,3 @@
-// Card with title and subtitle
-
 import React from "react";
 
 export default function Card({
