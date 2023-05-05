@@ -170,7 +170,7 @@ const SearchForm = ({ response }) => {
                                     value={search.npiNumber}
                                     onChange={(e) => handleChange(e)}
                                     className={inputStyle}
-                                    maxlength="100"
+                                    maxlength="10"
                                 />
                             </div>
                             <div className="w-full">
