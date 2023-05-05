@@ -1,7 +1,22 @@
 # BetterRX Coding Challenge
 ## Overview
-I created this NPI Record Viewer as part of the hiring process for BetterRx. The application is fully deployed at
-[npi.jpeckham.com](https://npi.jpeckham.com). The application is built using PHP, Laravel, and React with InertiaJS as the glue.
+I created this NPI Record Viewer as part of the hiring process for BetterRx. The application is fully deployed at [npi.jpeckham.com](https://npi.jpeckham.com).
+
+### Technologies Used
+
+#### Backend
+- [Laravel](https://laravel.com/)
+- [InertiaJS](https://inertiajs.com/)
+
+#### Frontend
+- [React](https://reactjs.org/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Vite](https://vitejs.dev/)
+
+#### Deployment
+- [Oracle Cloud Infrastructure](https://www.oracle.com/cloud/)
+- [Ubuntu 22.04](https://ubuntu.com/)
+- [Nginx](https://www.nginx.com/)
 
 ## Screenshot
 
@@ -20,6 +35,11 @@ Finally, run Vite to compile the React application.
 ```bash
 npm run build
 ```
+To watch for changes, and output *meaningful* error messages, you can run the following command.
+```bash
+npm run dev
+```
+
 ## Serving the Application
 You can serve the application using the built-in PHP server.
 ```bash
