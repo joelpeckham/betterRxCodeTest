@@ -11,7 +11,7 @@ export default function Welcome({ searchData }) {
     return (
         <div className="relative w-full">
             <Head title="NPI Search" />
-            <div className="mx-auto max-w-6xl px-6 lg:px-8">
+            <div className="mx-auto max-w-5xl px-6 lg:px-8">
                 <section id="tippyTop">
                     <Header />
                 </section>
