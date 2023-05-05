@@ -7,7 +7,7 @@ export default function ProviderListItem({
     index,
 }) {
     const providerName = () => {
-        if (provider.basic.organization_name) {
+        if (provider.enumeration_type=="NPI-2") {
             return provider.basic.organization_name;
         } else {
             return (
