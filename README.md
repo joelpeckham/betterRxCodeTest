@@ -18,7 +18,7 @@ I created this NPI Record Viewer as part of the hiring process for BetterRx. The
 - [Ubuntu 22.04](https://ubuntu.com/)
 - [Nginx](https://www.nginx.com/)
 
-## Screenshot
+### Screenshot
 
 <a href="https://npi.jpeckham.com">![Screenshot of https://npi.jpeckham.com](https://jpeckham.com/npi_screen.webp)</a>
 
