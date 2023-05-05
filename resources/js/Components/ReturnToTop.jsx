@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useState } from "react";
 
-const ReturnToTop = (sectionId) => {
+const ReturnToTop = ({sectionId}) => {
     const [scrollPosition, setPosition] = useState(0);
     useLayoutEffect(() => {
         function updatePosition() {
