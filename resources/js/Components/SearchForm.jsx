@@ -125,13 +125,13 @@ const SearchForm = ({ response }) => {
             >
                 <div className="flex flex-row flex-wrap items-center gap-2 sm:flex-nowrap">
                     <div className="w-full">
-                        <label htmlFor="firstName" className={labelStyle}>
-                            First Name {errorElement("firstName")}
+                        <label htmlFor="first_name" className={labelStyle}>
+                            First Name {errorElement("first_name")}
                         </label>
                         <input
                             type="text"
                             name="firstName"
-                            id="firstName"
+                            id="first_name"
                             value={search.firstName}
                             onChange={(e) => handleChange(e)}
                             className={inputStyle}
@@ -139,13 +139,13 @@ const SearchForm = ({ response }) => {
                         />
                     </div>
                     <div className="w-full">
-                        <label htmlFor="lastName" className={labelStyle}>
-                            Last Name {errorElement("lastName")}
+                        <label htmlFor="last_name" className={labelStyle}>
+                            Last Name {errorElement("last_name")}
                         </label>
                         <input
                             type="text"
                             name="lastName"
-                            id="lastName"
+                            id="last_name"
                             value={search.lastName}
                             onChange={(e) => handleChange(e)}
                             className={inputStyle}
