@@ -12,12 +12,15 @@ const ReturnToTop = (sectionId) => {
     }, []);
     return (
         <div
-            className={`fixed bottom-0 right-0 mb-4 mr-4 transition-opacity ${
+            className={`fixed bottom-0 right-0 mb-4 mr-4 transition-opacity duration-500 ${
                 scrollPosition > 450 ? "opacity-100" : "opacity-0"
             }`}
         >
             <a href={`#${sectionId}`} aria-label="Return to Top">
-                <button className="rounded-full bg-indigo-600 px-4 py-2 font-bold text-white hover:bg-indigo-500" aria-label="Return to Top">
+                <button
+                    className="rounded-full bg-indigo-600 px-4 py-2 font-bold text-white hover:bg-indigo-500"
+                    aria-label="Return to Top"
+                >
                     <svg
                         className="h-6 w-6"
                         fill="none"
