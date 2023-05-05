@@ -34,15 +34,8 @@
     background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
-/* style={{
-                    overlay: {
-                        backgroundColor: "rgba(0, 0, 0, 0.3)",
-                    },
-                    content: {
-                        padding: "0",
-                        border: "none",
-                        background: "none",
-                        overflow: "visible",
-                        inset:"40px"
-                    },
-                }} */
+@media screen and (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }

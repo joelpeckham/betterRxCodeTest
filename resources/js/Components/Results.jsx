@@ -71,7 +71,7 @@ export default function Results({searchData}) {
     const resultsShowing = providerList.length > 50 ? 50 : providerList.length;
 
     return (
-        <div className="w-full">
+        <div className="w-full pb-24 ">
             <Card
                 title="Search Results"
                 subtitle={`Showing ${resultsShowing} result${resultsShowing == 1 ? "" : "s"}.`}

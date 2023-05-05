@@ -21,7 +21,6 @@ export default function Welcome({ searchData }) {
 
                 {searchData && <Results searchData={searchData} />}
             </div>
-            <div className="h-12"></div>
             <ReturnToTop sectionId={"tippyTop"}/>
             <ColorBlobsBG />
         </div>
