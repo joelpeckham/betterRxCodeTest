@@ -123,7 +123,7 @@ const SearchForm = ({ response }) => {
                 }}
                 ref={parentRef}
             >
-                <div className="flex flex-row flex-wrap items-center gap-2 sm:flex-nowrap">
+                <div className="flex flex-row flex-wrap items-end gap-2 sm:flex-nowrap">
                     <div className="w-full">
                         <label htmlFor="first_name" className={labelStyle}>
                             First Name {errorElement("first_name")}
@@ -155,7 +155,7 @@ const SearchForm = ({ response }) => {
                 </div>
                 {isAdvancedSearch && (
                     <div>
-                        <div className="mt-1 flex flex-row flex-wrap items-center gap-2  sm:flex-nowrap">
+                        <div className="mt-1 flex flex-row flex-wrap items-end gap-2  sm:flex-nowrap">
                             <div className="w-full">
                                 <label
                                     htmlFor="npiNumber"
@@ -191,7 +191,7 @@ const SearchForm = ({ response }) => {
                                 />
                             </div>
                         </div>
-                        <div className="mt-1 flex flex-row flex-wrap items-center gap-2  sm:flex-nowrap">
+                        <div className="mt-1 flex flex-row flex-wrap items-end gap-2  sm:flex-nowrap">
                             <div className="w-full">
                                 <label htmlFor="city" className={labelStyle}>
                                     City {errorElement("city")}
