@@ -6,9 +6,10 @@ export default function Card({
     children,
     footer,
     closeAction,
+    containerClasses = "flex h-full w-full flex-col justify-between divide-y divide-gray-200 overflow-y-scroll rounded-lg bg-white shadow md:overflow-auto",
 }) {
     return (
-        <div className="flex h-full w-full flex-col justify-between divide-y divide-gray-200 overflow-y-scroll rounded-lg bg-white shadow md:overflow-auto">
+        <div className={containerClasses}>
             <div className="flex flex-col justify-start divide-y divide-gray-200">
                 <div className="px-4 py-5 sm:px-6">
                     <div className="items flex justify-between">
@@ -17,7 +18,7 @@ export default function Card({
                         </h2>
                         {closeAction && (
                             <button
-                                className="text-2xl text-gray-500 hover:text-gray-400"
+                                className="text-2xl text-gray-500 hover:text-black focus:text-gray-400 focus:outline-none"
                                 onClick={closeAction}
                             >
                                 &times;

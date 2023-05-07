@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Modal from "react-modal";
+import Modal from "./Modal";
 import ProviderList from "./ProviderList";
 import ProviderDetail from "./ProviderDetail";
 import Card from "./Card";
@@ -7,17 +7,12 @@ import Pagination from "./Pagination";
 import NoResults from "./NoResults";
 import { router } from "@inertiajs/react";
 
-Modal.setAppElement("#app");
-
-export default function Results({searchData}) {
-
+export default function Results({ searchData }) {
     const [selected, setSelected] = useState(null);
     const providerList = searchData["res"]["results"];
 
     if (providerList.length === 0) {
-        return (
-            <NoResults />
-        );
+        return <NoResults />;
     }
 
     const morePages = searchData["res"]["result_count"] > 50;
@@ -39,7 +34,10 @@ export default function Results({searchData}) {
         if (request.page < 1) {
             request.page = 1;
         }
-        router.get("/search", request, { preserveScroll: true, preserveState: true });
+        router.get("/search", request, {
+            preserveScroll: true,
+            preserveState: true,
+        });
     };
 
     const paginationFooter = (
@@ -74,21 +72,24 @@ export default function Results({searchData}) {
         <div className="w-full pb-24 ">
             <Card
                 title="Search Results"
-                subtitle={`Showing ${resultsShowing} result${resultsShowing == 1 ? "" : "s"}.`}
+                subtitle={`Showing ${resultsShowing} result${
+                    resultsShowing == 1 ? "" : "s"
+                }.`}
                 footer={paginationFooter}
             >
-                <ProviderList providerData={providerList} selectedProvider = {selected} setSelectedProvider={setSelected} />
+                <ProviderList
+                    providerData={providerList}
+                    selectedProvider={selected}
+                    setSelectedProvider={setSelected}
+                />
             </Card>
-            <Modal
-                isOpen={selected !== null}
-                onRequestClose={() => setSelected(null)}
-                contentLabel="Provider Details"
-            >
+            <Modal show={selected !== null} onClose={() => setSelected(null)}>
                 <Card
                     title="Provider Details"
                     subtitle="Information from the NPI Registry."
                     footer={detailFooter}
                     closeAction={() => setSelected(null)}
+                    containerClasses={""}
                 >
                     <ProviderDetail provider={providerList[selected ?? 0]} />
                 </Card>
