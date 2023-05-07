@@ -89,7 +89,7 @@ export default function Results({ searchData }) {
                     subtitle="Information from the NPI Registry."
                     footer={detailFooter}
                     closeAction={() => setSelected(null)}
-                    containerClasses={""}
+                    containerClasses={"divide-y divide-gray-200"}
                 >
                     <ProviderDetail provider={providerList[selected ?? 0]} />
                 </Card>
