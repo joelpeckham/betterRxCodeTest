@@ -1,5 +1,5 @@
 import ProviderListItem from "./ProviderListItem";
-const ProviderList = ({providerData, selectedProvider, setSelectedProvider}) => {
+const ProviderList = ({providerData, selectedProvider, setSelectedProvider, setModalOpen}) => {
     const providerList = providerData.slice(0, 50);
     return (
         <ul className="h-full divide-y divide-gray-200">
@@ -11,6 +11,7 @@ const ProviderList = ({providerData, selectedProvider, setSelectedProvider}) => 
                         provider={provider}
                         selected={selectedProvider}
                         setSelected={setSelectedProvider}
+                        setModalOpen={setModalOpen}
                     />
                 );
             })}

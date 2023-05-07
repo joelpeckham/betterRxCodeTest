@@ -9,6 +9,7 @@ import { router } from "@inertiajs/react";
 
 export default function Results({ searchData }) {
     const [selected, setSelected] = useState(null);
+    const [modalOpen, setModalOpen] = useState(false);
     const providerList = searchData["res"]["results"];
 
     if (providerList.length === 0) {
@@ -81,14 +82,15 @@ export default function Results({ searchData }) {
                     providerData={providerList}
                     selectedProvider={selected}
                     setSelectedProvider={setSelected}
+                    setModalOpen={setModalOpen}
                 />
             </Card>
-            <Modal show={selected !== null} onClose={() => setSelected(null)}>
+            <Modal show={modalOpen} onClose={() => setModalOpen(false)}>
                 <Card
                     title="Provider Details"
                     subtitle="Information from the NPI Registry."
                     footer={detailFooter}
-                    closeAction={() => setSelected(null)}
+                    closeAction={() => setModalOpen(false)}
                     containerClasses={"divide-y divide-gray-200"}
                 >
                     <ProviderDetail provider={providerList[selected ?? 0]} />

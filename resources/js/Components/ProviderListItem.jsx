@@ -4,10 +4,11 @@ export default function ProviderListItem({
     provider,
     selected,
     setSelected,
+    setModalOpen,
     index,
 }) {
     const providerName = () => {
-        if (provider.enumeration_type=="NPI-2") {
+        if (provider.enumeration_type == "NPI-2") {
             return provider.basic.organization_name;
         } else {
             return (
@@ -23,10 +24,10 @@ export default function ProviderListItem({
 
     return (
         <li
-            className={`${
-                selected == index ? "bg-gray-200" : "hover:bg-gray-50"
-            } cursor-pointer rounded-md`}
-            onClick={() => setSelected(index)}
+            className={"cursor-pointer rounded-md hover:bg-gray-50 "}
+            onClick={() => {
+                setSelected(index), setModalOpen(true);
+            }}
         >
             <div className="px-4 py-4 sm:px-6">
                 <div className="flex flex-col justify-between gap-1 lg:flex-row  lg:items-center lg:gap-2">
