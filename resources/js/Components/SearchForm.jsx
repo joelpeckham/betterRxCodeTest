@@ -135,7 +135,7 @@ const SearchForm = ({ response }) => {
                             value={search.firstName}
                             onChange={(e) => handleChange(e)}
                             className={inputStyle}
-                            maxlength="100"
+                            maxLength={100}
                         />
                     </div>
                     <div className="w-full">
@@ -149,7 +149,7 @@ const SearchForm = ({ response }) => {
                             value={search.lastName}
                             onChange={(e) => handleChange(e)}
                             className={inputStyle}
-                            maxlength="100"
+                            maxLength={100}
                         />
                     </div>
                 </div>
@@ -170,7 +170,7 @@ const SearchForm = ({ response }) => {
                                     value={search.npiNumber}
                                     onChange={(e) => handleChange(e)}
                                     className={inputStyle}
-                                    maxlength="10"
+                                    maxLength={10}
                                 />
                             </div>
                             <div className="w-full">
@@ -187,7 +187,7 @@ const SearchForm = ({ response }) => {
                                     value={search.taxonomyDescription}
                                     onChange={(e) => handleChange(e)}
                                     className={inputStyle}
-                                    maxlength="100"
+                                    maxLength={100}
                                 />
                             </div>
                         </div>
@@ -203,7 +203,7 @@ const SearchForm = ({ response }) => {
                                     value={search.city}
                                     onChange={(e) => handleChange(e)}
                                     className={inputStyle}
-                                    maxlength="100"
+                                    maxLength={100}
                                 />
                             </div>
                             <div className="w-full">
@@ -223,7 +223,7 @@ const SearchForm = ({ response }) => {
                                     value={search.zip}
                                     onChange={(e) => handleChange(e)}
                                     className={inputStyle}
-                                    maxlength="15"
+                                    maxLength={15}
                                 />
                             </div>
                         </div>
