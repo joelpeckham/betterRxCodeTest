@@ -11,14 +11,15 @@ export default function Results({ searchData }) {
     const [selected, setSelected] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
     const providerList = searchData["res"]["results"];
-    const selectedProvider = providerList[(selected && selected < providerList.length) ? selected : 0];
+    
 
     if (providerList.length === 0) {
         return <NoResults />;
     }
 
-    const morePages = searchData["res"]["result_count"] > 50;
-    const pageNumber = parseInt(searchData["req"]["page"]);
+    const selectedProvider = providerList[(selected && selected < providerList.length) ? selected : 0];
+    const pageNumber = Math.min(parseInt(searchData["req"]["page"]), 21);
+    const morePages = searchData["res"]["result_count"] > 50 && pageNumber < 21;
 
     let request = searchData["req"];
 
@@ -45,7 +46,7 @@ export default function Results({ searchData }) {
     const paginationFooter = (
         <div className="flex w-full justify-center">
             <Pagination
-                page={request.page}
+                page={pageNumber}
                 isMorePages={morePages}
                 increase={increasePageNumber}
                 decrease={decreasePageNumber}
