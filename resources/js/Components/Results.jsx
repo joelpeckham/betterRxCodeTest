@@ -11,6 +11,7 @@ export default function Results({ searchData }) {
     const [selected, setSelected] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
     const providerList = searchData["res"]["results"];
+    const selectedProvider = providerList[(selected && selected < providerList.length) ? selected : 0];
 
     if (providerList.length === 0) {
         return <NoResults />;
@@ -56,7 +57,7 @@ export default function Results({ searchData }) {
         <div className="flex justify-center">
             <a
                 href={`https://npiregistry.cms.hhs.gov/provider-view/${
-                    providerList[selected ?? 0].number
+                    selectedProvider.number
                 }`}
                 target="_blank"
             >
@@ -93,7 +94,7 @@ export default function Results({ searchData }) {
                     closeAction={() => setModalOpen(false)}
                     containerClasses={"divide-y divide-gray-200"}
                 >
-                    <ProviderDetail provider={providerList[selected ?? 0]} />
+                    <ProviderDetail provider={selectedProvider} />
                 </Card>
             </Modal>
         </div>
